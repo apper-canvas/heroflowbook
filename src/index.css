@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-lg bg-white bg-opacity-70 border border-white border-opacity-20 shadow-soft;
+  }
+  
+  .neu-button {
+    @apply bg-gradient-to-br from-white to-gray-50 shadow-neu-light hover:shadow-inner-soft transition-all duration-200 border border-gray-200;
+  }
+  
+  .yoga-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .booking-card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-soft transition-all duration-300 border border-gray-100;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20 transition-all duration-200 bg-white;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark text-white font-medium py-3 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary to-secondary-dark text-white font-medium py-3 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+  }
+  
+  .time-slot {
+    @apply p-3 text-center border border-gray-200 hover:bg-primary hover:bg-opacity-10 cursor-pointer transition-colors duration-200 rounded-lg;
+  }
+  
+  .time-slot.available {
+    @apply bg-green-50 border-green-200 text-green-800 hover:bg-green-100;
+  }
+  
+  .time-slot.booked {
+    @apply bg-red-50 border-red-200 text-red-800 cursor-not-allowed;
+  }
+  
+  .time-slot.selected {
+    @apply bg-primary text-white border-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* Toast customizations */
+.Toastify__toast--success {
+  @apply bg-gradient-to-r from-secondary to-secondary-dark;
+}
+
+.Toastify__toast--error {
+  @apply bg-gradient-to-r from-red-500 to-red-600;
+}
+
+.Toastify__toast--warning {
+  @apply bg-gradient-to-r from-accent to-yellow-500;
+}
+
+/* Loading animations */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .time-slot {
+    @apply p-4 text-left;
+  }
+}
